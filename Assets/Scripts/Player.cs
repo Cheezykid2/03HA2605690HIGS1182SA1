@@ -3,11 +3,10 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
 {
-
     [SerializeField] private float _movementSpeed = 50f;
     [SerializeField] private float _turnSpeed = 60f;
-    [SerializeField] private Thruster[] _thrusters;
-    [SerializeField] private Laser[] _lasers;
+    [SerializeField] private Thruster[] _thruster;
+    [SerializeField] private Laser[] _laser;
 
     private void Update()
     {
@@ -20,7 +19,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            foreach (var laser in _lasers)
+            foreach (var laser in _laser)
             {
                 laser.FireLaser();
             }
@@ -31,16 +30,35 @@ public class Player : MonoBehaviour
     {
         float pitch = _turnSpeed * Time.deltaTime * Input.GetAxis("Vertical");
         float yaw = _turnSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
-        float roll = _turnSpeed * Time.deltaTime * -Input.GetAxis("Roll");
+
+        float roll = 0f;
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            roll = _turnSpeed * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            roll = -_turnSpeed * Time.deltaTime;
+        }
+
         transform.Rotate(pitch, yaw, roll);
     }
 
     private void Move()
     {
-        if (Input.GetAxis("Fire3") > 0)
+        float throttle = Input.GetAxis("Fire3");
+
+        if (throttle > 0)
         {
-            transform.position += transform.forward * _movementSpeed * Time.deltaTime * Input.GetAxis("Fire3");
-            SetThrusterIntensity(Input.GetAxis("Fire3"));
+            transform.position +=
+                _movementSpeed
+                * throttle
+                * Time.deltaTime
+                * transform.forward;
+
+            SetThrusterIntensity(throttle);
         }
         else
         {
@@ -50,11 +68,9 @@ public class Player : MonoBehaviour
 
     private void SetThrusterIntensity(float intensity)
     {
-        foreach (var thruster in _thrusters)
+        foreach (var thruster in _thruster)
         {
             thruster.Intensity(intensity);
         }
-
     }
-
 }

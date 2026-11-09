@@ -59,7 +59,7 @@ public class AsteroidManager : MonoBehaviour
     private void SpawnPickup()
     {
         var randomAsteroid = _asteroidList[Random.Range(0, _asteroidList.Count)];
-        var spawnedPickup = Instantiate(_pickupPrefab, randomAsteroid.transform.position, Quaternion.identity, transform);
+        var spawnedPickup = Instantiate(_pickupPrefab, randomAsteroid.transform.position, Quaternion.identity, transform); spawnedPickup.name = name;
         spawnedPickup.name = randomAsteroid.name.Replace("Asteroid", "Pickup");
         _asteroidList.Remove(randomAsteroid);
         Destroy(randomAsteroid.gameObject);

@@ -37,7 +37,7 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(base.transform.position, laserDirection, out RaycastHit hit))
         {
             Debug.Log("Raycast Hit: " + hit.transform.name);
-            SpawnExplostion(hit.point, hit.transform);
+            SpawnExplosion(hit.point, hit.transform);
 
             if (hit.transform.CompareTag("Pickup"))
             {
@@ -58,7 +58,7 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void SpawnExplostion(Vector3 hitPosition, Transform target)
+    private void SpawnExplosion(Vector3 hitPosition, Transform target)
     {
         Explosion hitExplosion = target.GetComponent<Explosion>();
         if (hitExplosion != null)
@@ -79,7 +79,7 @@ public class Laser : MonoBehaviour
         {
             if (target != null)
             {
-                SpawnExplostion(targetPosition, target);
+                SpawnExplosion(targetPosition, target);
             }
             _laserBeam.SetPosition(0, transform.position);
             _laserBeam.SetPosition(1, targetPosition);

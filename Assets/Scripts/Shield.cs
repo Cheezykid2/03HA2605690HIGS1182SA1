@@ -16,14 +16,7 @@ public class Shield : MonoBehaviour
 
     private void Regenerate()
     {
-        if (_currentHealth < _maxHealth)
-        {
-            _currentHealth += _regenerationAmount;
-        }
-        else if (_currentHealth > _maxHealth)
-        {
-            _currentHealth = _maxHealth;
-        }
+        _currentHealth = Mathf.Max(0, _currentHealth);
         GameEventManager.UpdateHealthBar(Mathf.RoundToInt(_currentHealth / (float)_maxHealth * 100));
     }
 

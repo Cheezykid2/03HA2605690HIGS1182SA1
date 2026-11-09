@@ -1,10 +1,8 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
+[System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
 public class EnemyAttack : MonoBehaviour
 {
-
-
     [SerializeField] private Laser[] _lasers;
 
     private Transform _target;
@@ -14,43 +12,45 @@ public class EnemyAttack : MonoBehaviour
     {
         if (!TargetPlayer()) return;
 
-        if (TargetInfront() && HaveRaycastLineOfSight())
+        if (TargetInFront() && HaveRaycastLineOfSight())
         {
             FireLaser();
         }
     }
 
-    private bool TargetInfront()
+    private bool TargetInFront()
     {
-        Vector3 directionToTarget = transform.position - _target.position;
+        Vector3 directionToTarget = _target.position - transform.position;
         float angle = Vector3.Angle(transform.forward, directionToTarget);
-        if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
 
+        return angle < 90f;
     }
 
     private bool HaveRaycastLineOfSight()
     {
-        Vector3 attackDirection = _target.position - transform.position;
+        Vector3 attackDirection = (_target.position - transform.position).normalized;
+
         foreach (var laser in _lasers)
         {
-            if (Physics.Raycast(laser.transform.position, attackDirection, out RaycastHit hit, laser.Distance))
+            if (Physics.Raycast(
+                laser.transform.position,
+                attackDirection,
+                out RaycastHit hit,
+                laser.Distance))
             {
                 if (hit.transform.CompareTag("Player"))
                 {
-                    Debug.DrawRay(laser.transform.position, attackDirection, Color.green);
-                    _hitPosition = hit.transform.position;
+                    Debug.DrawRay(
+                        laser.transform.position,
+                        attackDirection * laser.Distance,
+                        Color.green);
+
+                    _hitPosition = hit.point;
                     return true;
                 }
             }
-
         }
+
         return false;
     }
 
@@ -67,13 +67,18 @@ public class EnemyAttack : MonoBehaviour
         if (_target == null)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
+
             if (player != null)
             {
                 _target = player.transform;
             }
         }
-        var foundTarget = (_target != null);
-        return foundTarget;
+
+        return _target != null;
     }
 
+    private string GetDebuggerDisplay()
+    {
+        return ToString();
+    }
 }
