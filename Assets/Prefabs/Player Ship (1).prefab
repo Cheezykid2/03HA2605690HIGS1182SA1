@@ -157,8 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 50
   _turnSpeed: 60
-  _thruster: []
-  _laser: []
+  _thruster:
+  - {fileID: 0}
+  _laser:
+  - {fileID: 2494703565080930809}
+  - {fileID: 120141938908052190}
 --- !u!114 &-2823355687244285632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +262,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
+--- !u!114 &2494703565080930809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3434982630376007403, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
+  m_PrefabInstance: {fileID: 951795728328314642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c051dda1a89f1904bba7ffb0c5ee96c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4781704767465955478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5722230192184225668, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
@@ -383,6 +397,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
+--- !u!114 &120141938908052190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3434982630376007403, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
+  m_PrefabInstance: {fileID: 3315026407533272117}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c051dda1a89f1904bba7ffb0c5ee96c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7018900696794182577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5722230192184225668, guid: d1018a7be45154c46ad241e39559cad7, type: 3}
