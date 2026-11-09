@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7859238247234401092}
-  - component: {fileID: 7859238247234401093}
+  - component: {fileID: 1121434376992250817}
   m_Layer: 0
   m_Name: Asteroid Manager
   m_TagString: Untagged
@@ -24,14 +24,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7859238247234401094}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7859238247234401093
+--- !u!114 &1121434376992250817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,12 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7859238247234401094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd1a49a123f841489c4c5fd581a5567, type: 3}
+  m_Script: {fileID: 11500000, guid: a5ac6ca71ac8f7144aaa8ac0ed847395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPrefab: {fileID: 9053711631501725320, guid: a21e251ffd57f7544943ff7292d30302,
-    type: 3}
-  _pickupPrefab: {fileID: 6959094968400859277, guid: 520a888d83dad2f40b143975cc437472,
-    type: 3}
+  _asteroidPrefab: {fileID: 5104116266867960088, guid: 8654a3b1184aed648936d9b6b09b5612, type: 3}
+  _pickupPrefab: {fileID: 6959094968400859277, guid: 453fbd84475a28746a92abad1a78a25b, type: 3}
   _asteroidsPerAxis: 10
   _gridSpacing: 50
